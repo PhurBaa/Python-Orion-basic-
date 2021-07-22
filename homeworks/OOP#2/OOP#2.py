@@ -24,13 +24,14 @@ class Battery:
 class Guitar:
     def __init__(self, guitar_string):
         self.guitar_string = guitar_string
-        string1 = GuitarString('This is first guitar string')
-        string2 = GuitarString('This is second guitar string')
 
 
 class GuitarString:
-    pass
+    def __init__(self):
+        pass
 
+
+guitar = Guitar()
 
 """
 3. Make class with one method "add_nums" with 3 parameters, which returns sum of these parameters.
@@ -84,13 +85,27 @@ class Pasta:
 
 
 class Concert:
-    def __init__(self, max_visitors_num):
-        self.max_visitors = max_visitors_num
-        concert = Concert()
-        if concert.visitors_count > concert.max_visitors:
-            concert.visitors = concert.max_visitors
-            return concert.visitors
+    max_visitor_num = 0
 
+    def __init__(self, visitors_count):
+        self.visitors_count = visitors_count
+
+    @property
+    def visitors_count(self):
+        return f"Max visitors number: {self._visitors_count}"
+
+    @visitors_count.setter
+    def visitors_count(self, v_count):
+        if v_count > self.max_visitor_num:
+            self._visitors_count = self.max_visitor_num
+        else:
+            self._visitors_count = v_count
+
+
+Concert.max_visitor_num = 5000
+concert = Concert()
+concert.visitors_count = 3567
+print(concert.visitors_count)
 
 """
 6.    Create dataclass with 7 fields - key (int), name (str), phone_number (str), address (str), email (str), birthday (str), age (int)
@@ -131,7 +146,7 @@ class AdressBook:
         self.birthday = birthday
         self.age = age
 
-        def __str__(self):
+    def __str__(self):
             return f'Info about us {self.key} {self.name} {self.phone_number} {self.adress} {self.email} {self.birthday} {self.age}'
 
 
@@ -151,7 +166,7 @@ class Person:
 
 
 person = Person('John', '36', 'USA')
-setattr(person, 'name', 'Vitalii')
+setattr(person, 'age', '31')
 
 
 @property
@@ -159,7 +174,7 @@ def person_info(self):
     return print(f'Name : {self.name}, Age: {self.age}, Country: {self.country}')
 
 
-print('Hello, my name is:', getattr(person, 'name'))
+print('Hello, my name is:', getattr(person, 'age'))
 
 """
 10.   Add an 'email' attribute of the object student and set its value
@@ -190,8 +205,7 @@ print('Hello, my name is:', getattr(student, 'name'), 'my email is:', getattr(st
 
 
 class Celsius:
-    def __init__(self,temperature=0):
-
+    def __init__(self, temperature=0):
         self._temperature = temperature
 
     @property
