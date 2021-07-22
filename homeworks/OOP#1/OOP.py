@@ -52,8 +52,8 @@ class SchoolBus(School, Bus):
     def __init__(self, bus_school_color):
         self.bus_shool_color = bus_school_color
 
-        School.__init__(self=School, get_school_id=142, number_of_students=10000)
-        Bus.__init__(self=Bus, seating_capacity=50, max_speed=90, mileage=12000)
+        School.__init__(get_school_id=142, number_of_students=10000)
+        Bus.__init__(seating_capacity=50, max_speed=90, mileage=12000)
 
         def bus_school_color():
             bus_school_color = "Red"
